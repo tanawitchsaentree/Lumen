@@ -1,0 +1,120 @@
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="stage">
+    <!-- ======================= DRAWER ======================= -->
+    <aside id="drawer" aria-label="Conversations" inert>
+      <div class="d-head">
+        <h2 class="d-title">Chats</h2>
+        <div class="d-head-btns">
+          <button class="ib glass" id="theme-btn" aria-label="Toggle dark mode"></button>
+          <button class="ib glass" id="d-new" aria-label="New chat"></button>
+        </div>
+      </div>
+      <label class="d-search" id="d-search">
+        <span id="d-search-ic"></span>
+        <input id="d-q" type="search" placeholder="Search chats" enterkeyhint="search" autocomplete="off" autocorrect="off" spellcheck="false" aria-label="Search chats">
+        <button class="d-clear" id="d-clear" aria-label="Clear search" hidden></button>
+      </label>
+      <div class="d-list" id="d-list" role="list"></div>
+      <div class="d-foot">
+        <button class="d-me" id="open-settings" aria-label="Open settings">
+          <span class="avatar">A</span>
+          <span><b>Alex Rivera</b><small>Lumen Plus · Settings</small></span>
+          <span id="gear-ic"></span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- ======================= MAIN ======================= -->
+    <main id="main" data-mode="home">
+      <div class="ambient" aria-hidden="true"><i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i></div>
+
+      <div id="scroller" class="scroller">
+        <div id="inner">
+          <section id="home" class="home" aria-label="New chat">
+            <div class="home-mark reveal" id="home-mark" style="--i:0"></div>
+            <h1 class="greet reveal" id="greet" style="--i:1">Good evening</h1>
+            <p class="greet-sub reveal" id="greet-sub" style="--i:2"></p>
+          </section>
+          <header class="lt" id="lt">
+            <h1 id="lt-title"></h1>
+            <p id="lt-sub"></p>
+          </header>
+          <div id="messages" role="log" aria-label="Messages" aria-live="off" aria-relevant="additions"></div>
+        </div>
+      </div>
+
+      <div class="chips-wrap" id="chips-wrap">
+        <div class="chips" id="chips" role="list" aria-label="Suggestions"></div>
+      </div>
+
+      <nav class="nav" id="nav" aria-label="Chat">
+        <div class="nav-glass" aria-hidden="true"></div>
+        <button class="ib glass" id="menu-btn" aria-label="Open conversations" aria-expanded="false"></button>
+        <button class="nav-pill" id="model-btn" aria-haspopup="menu" aria-expanded="false" aria-label="Choose model">
+          <span class="np-model glass"><span id="np-model-name">Lumen 2</span><span id="np-chev"></span></span>
+          <span class="np-title" aria-hidden="true"><b id="np-title"></b><small><span id="np-model-small">Lumen 2</span><span id="np-chev2"></span></small></span>
+        </button>
+        <div class="nav-right">
+          <button class="ib glass" id="new-btn" aria-label="New chat"></button>
+        </div>
+      </nav>
+
+      <button class="fab-down glass" id="fab" aria-label="Scroll to latest message"><span id="fab-ic"></span><span class="badge" id="badge" aria-hidden="true">0</span></button>
+
+      <div class="pop glass" id="pop" role="listbox" aria-label="Suggestions" hidden></div>
+
+      <footer class="composer" id="composer">
+        <div class="cmp-top">
+          <div class="cmp-ctx glass" id="cmp-ctx" hidden></div>
+          <div class="cmp-atts" id="cmp-atts" aria-label="Attachments"></div>
+        </div>
+        <div class="cmp-bar glass" id="cmp-bar">
+          <button class="cmp-plus" id="plus-btn" aria-label="Add photos, files and tools" aria-haspopup="dialog"></button>
+          <div class="cmp-field has-orb" id="cmp-field">
+            <div class="ph" id="ph" aria-hidden="true"></div>
+            <textarea id="input" rows="1" enterkeyhint="send" autocomplete="off" autocapitalize="sentences" aria-label="Message Lumen. Type slash for commands, at for agents."></textarea>
+            <button class="cmp-orb" id="orb-btn" aria-label="Start voice chat"><span class="mini-orb"></span></button>
+          </div>
+          <button class="cmp-primary" id="primary" data-state="mic" aria-label="Hold to record a voice message">
+            <span class="pi pi-mic"></span><span class="pi pi-send"></span><span class="pi pi-stop"></span>
+          </button>
+          <div class="rec" id="rec" aria-hidden="true">
+            <button class="rec-trash" id="rec-trash" aria-label="Discard recording"></button>
+            <span class="rec-dot"></span>
+            <span class="rec-time" id="rec-time">0:00</span>
+            <canvas class="rec-wave" id="rec-wave"></canvas>
+            <span class="rec-hint" id="rec-hint">‹ Slide to cancel</span>
+          </div>
+        </div>
+        <div class="rec-lock glass" id="rec-lock" aria-hidden="true"><span class="lk" id="lk-ic"></span><span class="lk-chev" id="lk-chev"></span></div>
+        <div class="rec-cap glass" id="rec-cap" aria-live="polite"></div>
+      </footer>
+
+      <div class="main-shield" id="shield" aria-hidden="true"></div>
+    </main>
+  </div>
+
+  <div id="island" aria-hidden="true"><div class="is-bg" id="is-bg"></div><div class="is-c" id="is-c"></div></div>
+  <div id="island-live" class="sr-only" role="status" aria-live="polite"></div>
+  <div id="toasts"></div>
+  <div id="menu-root"></div>
+  <div id="sheets"></div>
+  <div id="ctx" hidden></div>
+  <div id="lightbox" hidden></div>
+  <div id="voice" hidden role="dialog" aria-modal="true" aria-label="Voice chat"></div>
+  <div id="fx" aria-hidden="true"></div>
+  <div id="sr-live" class="sr-only" aria-live="polite"></div>
+
+  <input type="file" id="f-photos" accept="image/*" multiple hidden>
+  <input type="file" id="f-camera" accept="image/*" capture="environment" hidden>
+  <input type="file" id="f-files" multiple hidden>
+</div>
+
+<div id="launch" aria-hidden="true">
+  <div class="l-mark" id="l-mark"></div>
+  <div class="l-word">Lumen</div>
+</div>
+<script>
